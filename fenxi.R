@@ -12,5 +12,6 @@ attach(ye_si_data)
 #设置主题
 
 #画图
-ys_zsl_pic <- ggplot(ye_si_data)
-ys_zsl_pic + geom_boxplot(aes(x = 牌号, y = 整丝率实测值...),fill = 牌号)
+
+ys_zsl_pic <- ggplot(data = ye_si_data)
+ys_zsl_pic + geom_boxplot(aes(x = 牌号,y = 整丝率实测值...,fill = 牌号) + ggtitle("叶丝整丝率箱线图")
