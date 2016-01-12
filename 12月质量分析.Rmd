@@ -1,0 +1,41 @@
+
+---
+title: "2015年12月过程质量分析报告"
+output: word_document
+---
+
+#一、一车间质量抽检概况
+
+##1、叶丝质量抽检：
+
+###(1)整丝率箱线图
+
+```{r,echo=FALSE,fig.height=6,fig.width=9}
+require(ggplot2)
+library(knitr)
+require(rmarkdown)
+setwd("E:/R/data/")
+p <- read.csv("E:/R/data/12月贮丝质量.csv")
+attach(p)
+zsl_pic <- ggplot(p,aes(x = p$牌号,y = 整丝率实测值...,fill =chu_si$牌号)) +
+  geom_hline(yintercept = 80)
+
+
+```
+
+2、叶丝填充值箱线图
+
+```{r,echo=FALSE,fig.height=6,fig.width=9}
+chu_si <- read.csv("E:/R/data/12月贮丝质量.csv")
+tcz_pic <- ggplot(chu_si)+geom_boxplot(aes(x = chu_si$牌号,y = chu_si$填充值实测值.cm..g. , fill = 牌号)) +
+  geom_hline(yintercept = 4.2,color = "blue") +geom_hline(yintercept = 4.0,color = "blue") + geom_tile("整丝率箱线图")
+tcz_pic
+``` 
+
+3.yesiccl
+```{r, echo=FALSE,fig.height=6,fig.width=9}
+chu_si <- read.csv("E:/R/data/12月贮丝质量.csv")
+scl_pic <- ggplot(chu_si)+geom_boxplot(aes(x = chu_si$牌号,y = chu_si$碎丝率实测值..., fill = 牌号)) +
+  geom_hline(yintercept = 1.5,color = "blue") +geom_hline(yintercept =3.0,color = "blue")
+scl_pic
+```

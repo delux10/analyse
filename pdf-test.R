@@ -1,16 +1,19 @@
 
-
-#测试PDF
-
 library(ggplot2)
+library(Cairo)
+setwd("E:/R/data/") 
+ye_si_data <- read.csv("12月贮丝质量.csv")
+attach(ye_si_data)
 
-setwd("~/Documents/R/pdf/")
 
-data_test<-data.frame(c1<-c(7,8,9,10,11,12),c2<-c(23,36,87,54,15,98),c3<-c(400,325,567,212,698,555))
-attach(data_test)
-pdf("~/Documents/R/pdf/one.pdf")
-print("1929393939")
-plot(c1,c2)
-plot(c1,c3)
+
+ye_si_pic <- ggplot(ye_si_data)
+ye_si_pic + geom_boxplot(aes(x = 牌号, y = 整丝率实测值...,fill = 牌号))
+
+
+setwd("E:/R/pics/制丝质量/")
+
+
+CairoPDF("chinese.pdf",family="R/win-library/3.2/sysfonts/fonts/LiberationSans-Bold.ttf")
+print("12445141")
 dev.off()
-detach(data_test)
